@@ -1,0 +1,2231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+    /* openSans  */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+    /* Poppins */
+
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+    /* ROBOT  */
+
+    @import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap');
+    /* BALOO 2  */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        backface-visibility: hidden;
+    }
+
+    html {
+        font-size: 90%;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        /* background: #161623; */
+        background:
+            linear-gradient(rgb(17, 0, 255), transparent),
+            linear-gradient(to top left, rgb(0, 255, 115), transparent),
+            linear-gradient(to top right, rgb(255, 94, 0), transparent);
+        background-blend-mode: screen;
+    }
+
+    .container-main {
+        width: 95%;
+        /* max-width: 1288.19px; */
+        height: 90%;
+        /* max-height: 593.75px; */
+        border-radius: 20px;
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        box-shadow: 0 0 15px rgb(0 0 0/0.8);
+        overflow: hidden;
+        background: rgb(250 250 250);
+        /* border: 1px solid rgb(250 250 250/0.1); */
+    }
+
+    .searchbar {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 7px;
+    }
+
+    .search-cover {
+        border-radius: 20px;
+        width: 50%;
+        border: 1px solid rgb(250 250 250/0.2);
+        margin: 10px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .search-btn {
+        background: linear-gradient(to bottom right, #2563EB, #1D4ED8);
+        height: 43px;
+        width: 43px;
+        display: grid;
+        place-items: center;
+        border-radius: 0 25px 25px 0;
+        color: white;
+        cursor: pointer;
+    }
+
+    .search-btn:hover {
+        background: linear-gradient(to bottom right, #1D4ED8, #2563EB);
+    }
+
+    .search-btn:active svg {
+        transform: scale(0.9);
+    }
+
+    .searchbar input {
+        border-radius: 25px 0 0 25px;
+        box-shadow: 0 0 10px rgb(0 0 0/0.6) inset;
+        font-size: 18px;
+        padding: 8px 10px;
+        text-align: center;
+        color: black;
+        border: none;
+        width: 80%;
+
+    }
+
+
+
+    .searchbar input::placeholder {
+        font-size: 15px;
+        color: rgb(0 0 0/0.5);
+        font-weight: 600;
+    }
+
+    .searchbar .search-icon {
+        height: 20px;
+        stroke: rgb(250 250 250/0.8);
+        margin: 0 0px 0 7px;
+    }
+
+    .cart-svg {
+
+        /* position: absolute; */
+        /* top: 15px; */
+        /* right: 7px; */
+        height: 30px;
+        stroke: white;
+        /* padding: 6px; */
+        border-radius: 50%;
+        cursor: pointer;
+        margin-left: 8px;
+        /* transform: scale(2); */
+    }
+
+    .main-box::-webkit-scrollbar,
+    .songs-box::-webkit-scrollbar , .about-box::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .main-box::-webkit-scrollbar-thumb,
+    .songs-box::-webkit-scrollbar-thumb , .about-box::-webkit-scrollbar-thumb {
+        background: rgb(0 0 0/0.6);
+        border-radius: 8px;
+    }
+
+    ::-webkit-scrollbar-corner {
+        display: none !important;
+    }
+
+    .item-panel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        /* padding: 14px 16px; */
+    }
+
+    .item-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        height: 100%;
+    }
+
+    .item-box {
+        display: flex;
+        position: relative;
+        border-radius: 20px;
+        width: 100%;
+        color: black;
+        text-align: center;
+        user-select: none;
+        box-shadow: 0 0 10px rgb(0 0 0/0.3);
+        border: 1px solid rgb(0 0 0 / 30%);
+    }
+
+    .item-img {
+        background: white;
+        width: 50%;
+        height: 240px;
+        border-radius: 20px 0 0 20px;
+        border-right: 1px solid rgb(0 0 0/0.3);
+    }
+
+    .item-data {
+        font-family: "Roboto";
+        width: 50%;
+        height: 100%;
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: rgb(250 250 250/0.7);
+        border-radius: 0 20px 20px 0;
+    }
+
+    .item-img img {
+        height: 85%;
+        width: 85%;
+        object-fit: contain;
+        border-radius: 10px;
+        margin: 18px auto 0 auto;
+    }
+
+    .item-name,
+    .item-price {
+        font-weight: 700;
+        font-size: 16px;
+        display: grid;
+        place-items: center;
+        color: black;
+    }
+
+    .item-name {
+        font-size: 17px;
+        width: 100%;
+    }
+
+    .item-price {
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .btn-cover {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        margin: 10px 0 15px 0;
+    }
+
+    .submit-btn {
+        user-select: none;
+        border: 1px solid rgb(250 250 250/0.4);
+        font-size: 20px;
+        padding: 3px 8px;
+        border-radius: 6px;
+        text-align: center;
+        cursor: pointer;
+        color: white;
+        font-weight: 400;
+        white-space: nowrap;
+        margin: 9px 0 0 0;
+        box-shadow: 0 0 10px rgb(0 0 0 / 60%);
+        background: linear-gradient(to bottom right, #059669, #047857);
+        align-self: center;
+        justify-self: center;
+    }
+
+    .place-order-btn:hover {
+        background: linear-gradient(to bottom right, #047857, #059669);
+    }
+
+    .submit-btn {
+        background: rgb(77 91 249);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .submit-btn:hover {
+        background: linear-gradient(to bottom right, #1D4ED8, #2563EB);
+    }
+
+    .addtocart svg {
+        width: 20px;
+        margin-left: 6px;
+    }
+
+    .user-panel {
+        height: 100%;
+        background: rgb(250 250 250/0.2);
+        color: white;
+        text-align: center;
+        border-radius: 28px 0 0 28px;
+        font-size: 21px;
+    }
+
+    .item-desc {
+        background: rgb(250 250 250/0.6);
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        border-radius: 10px;
+        width: 100%;
+        border: 1px solid rgb(0 0 0/0.3);
+        text-align: center;
+        box-shadow: 0 0 10px rgb(0 0 0/0.3);
+        user-select: none;
+    }
+
+    .desc-details>div {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        border: 1px solid rgb(0 0 0/0.3);
+        border-radius: 8px;
+        padding: 6px 10px;
+    }
+
+    .desc-details {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+    }
+
+    .desc-title {
+        font-weight: 700;
+        margin: 0 0 10px 0;
+        font-size: 18px;
+    }
+
+    .desc-details>div>div:first-child {
+        font-weight: 700;
+        margin-bottom: 1px;
+        font-size: 15px;
+    }
+
+    .desc-details>div>div:last-child {
+        font-weight: 600;
+    }
+
+    .left-image,
+    .right-image {
+        position: absolute;
+        top: 150px;
+    }
+
+    .left-image svg,
+    .right-image svg {
+        height: 40px;
+        width: 40px;
+        fill: white;
+        background: radial-gradient(black 50%, white 50%);
+        border: 1px solid rgb(0 0 0/0.2);
+        color: black;
+        box-shadow: 0 0 8px rgb(0 0 0/0.8);
+        border-radius: 50%;
+    }
+
+    .left-image {
+        left: -20px;
+        cursor: pointer;
+    }
+
+    .right-image {
+        right: -20px;
+        cursor: pointer;
+    }
+
+    .left-image:active,
+    .right-image:active {
+        transform: scale(0.9);
+    }
+
+    .user-box {
+        background: #4d5bf9;
+    }
+
+    .user-box .music-logo {
+        /* border-radius: 20px 0 8px 0; */
+        border-radius: 10px;
+        margin: auto;
+        margin-top: 20px;
+        height: 110px;
+        box-shadow: 0 0 10px rgb(0 0 0/0.6);
+    }
+
+    .main-box {
+        padding: 10px 0px;
+        display: none;
+        position: relative;
+        margin: 10px;
+    }
+    .product-image-box {
+        border-left: 1px solid rgb(0 0 0/0.3);
+        border-radius: 0 20px 20px 0;
+        display: flex;
+        flex-direction: column;
+        background: rgb(250 250 250 / 0.7);
+    }
+
+    .cart-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 600;
+        text-align-last: center;
+        background: linear-gradient(to bottom right, #7C3AED, #6D28D9);
+        color: white;
+        border-radius: 0 20px 0 0;
+        padding: 8px 0;
+    }
+
+    .cart-text:hover {
+        background: linear-gradient(to bottom right, #6D28D9, #7C3AED);
+    }
+
+    .place-order {
+        color: rgb(255 255 255);
+        font-weight: 600;
+        text-align: center;
+        border-radius: 0 0 20px;
+        padding: 6px 0;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .place-order:active {
+        font-size: 17px;
+    }
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .user-info .user-text {
+        font-size: 25px;
+        font-weight: 700;
+        margin: 10px 0;
+        color: white;
+        white-space: pre-wrap;
+    }
+
+    .user-info svg {
+        height: 70px;
+        border-radius: 50%;
+        box-shadow: 0 0 25px rgb(0 0 0/0.4);
+    }
+
+
+    /* ------------ SVG STYlING OF sidebar-icons ----------  */
+
+    .st0,
+    .st1,
+    .st2 {
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+    }
+
+    .st3 {
+        fill: transparent;
+    }
+
+    /* ------------ SVG STYlING OF sidebar-icons ----------  */
+
+    .orders>label {
+        font-family: 'Poppins', sans-serif;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 20px 0 0px 13px;
+        border-radius: 20px 0 0 20px;
+        padding: 6px;
+        cursor: pointer;
+        color: white;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        /* box-shadow: 0 0 10px rgb(0 0 0/0.3); */
+        /* background: rgb(250 250 250/0.5); */
+        /* background: white; */
+    }
+
+    .orders>label:first-child {
+        margin-top: 0;
+    }
+
+    .orders>label:hover {
+        background: rgb(0 0 0/0.2);
+    }
+
+    .orders .svg-label {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        grid-gap: 3px;
+        place-items: center;
+        padding-left: 20px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .orders .svg-label span {
+        justify-self: start;
+        align-self: end;
+    }
+
+    .orders .sidebar-icons {
+        height: 30px;
+        fill: white;
+        stroke: white;
+    }
+
+    .orders .movies-box-svg {
+        height: 28px;
+        width: 26px;
+        padding: 2px 0;
+    }
+
+    #movies-box:checked~.container-main .movies-box,
+    #songs:checked~.container-main .songs,
+    #about:checked~.container-main .about,
+    #contact-us:checked~.container-main .contact-us {
+        background: white;
+        color: black;
+    }
+
+    #movies-box:checked~.container-main .movies-box svg,
+    #songs:checked~.container-main .songs svg,
+    #contact-us:checked~.container-main .contact-us svg {
+        stroke: black;
+    }
+    #about:checked~.container-main .about svg{
+        fill: black;
+    }
+  
+
+    .orders>label>b:nth-child(1),
+    .orders>label>b:nth-child(2) {
+        position: absolute;
+        top: -20px;
+        height: 20px;
+        width: 100%;
+        background: white;
+        cursor: default;
+        display: none;
+    }
+
+    .orders>label>b:nth-child(2) {
+        top: unset;
+        bottom: -20px;
+    }
+
+    .orders>label>b:nth-child(1)::before,
+    .orders>label>b:nth-child(2)::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0 0 30px 0;
+        background: #4d5bf9;
+    }
+
+    .orders>label>b:nth-child(2)::before {
+        border-radius: 0 30px 0 0;
+    }
+
+    #movies-box:checked~.container-main .movies-box>b:nth-child(1),
+    #movies-box:checked~.container-main .movies-box>b:nth-child(2),
+    #songs:checked~.container-main .songs>b:nth-child(1),
+    #songs:checked~.container-main .songs>b:nth-child(2),
+    #about:checked~.container-main .about>b:nth-child(1),
+    #about:checked~.container-main .about>b:nth-child(2),
+    #contact-us:checked~.container-main .contact-us>b:nth-child(1),
+    #contact-us:checked~.container-main .contact-us>b:nth-child(2) {
+        display: unset;
+    }
+
+    .orders>label>div:first-child {
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    .orders label span {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+
+    .user-box {
+        display: grid;
+        grid-template-rows: min-content 1fr;
+    }
+
+    .user-info-cover {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 10px 0;
+    }
+
+    .product-images {
+        height: 500px;
+        overflow-y: auto;
+        flex-grow: 1;
+        margin-bottom: 3px;
+        display: grid;
+        margin: 10px 4px;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-gap: 10px;
+    }
+
+    .product-images::-webkit-scrollbar {
+        width: 8px;
+
+    }
+
+    .product-images::-webkit-scrollbar-thumb {
+        background: rgb(0 0 0/0.7);
+        border-radius: 8px;
+    }
+
+    .product-image {
+        border: 1px solid rgb(0 0 0/0.3);
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgb(0 0 0 / 40%);
+        margin: 15px;
+        background: rgb(250 250 250 / 0.6);
+    }
+
+    .carts-row1 {
+        padding: 10px;
+    }
+
+    .product-img {
+        margin: 0 6px;
+        border-radius: 15px;
+        background: white;
+        box-shadow: 0 0 10px rgb(0 0 0/0.6);
+        padding: 20px 0;
+    }
+
+    .product-images .product-img:first-child {
+        margin-top: 10px;
+    }
+
+    .product-images .product-img:last-child {
+        margin-bottom: 10px;
+    }
+
+    .product-img img {
+        height: 100%;
+        width: 100px;
+        object-fit: contain;
+        border-radius: 10px;
+        /* margin: 18px auto 0 auto; */
+        margin: auto;
+    }
+
+    .product-price {
+        width: 50%;
+        display: grid;
+        place-items: center;
+    }
+
+    .carts-row2 {
+        padding: 6px;
+        text-align: center;
+        border-top: 1px solid rgb(0 0 0/0.3);
+        font-size: 15px;
+    }
+
+    .remove-cart {
+        background: linear-gradient(to bottom right, #EF4444,
+                #DC2626);
+        color: white;
+        cursor: pointer;
+        border-radius: 4px;
+        font-weight: 500;
+        font-size: 13px;
+        padding: 0 5px;
+        box-shadow: 0 0 6px rgb(0 0 0 / 60%);
+        user-select: none;
+    }
+
+    .remove-cart:hover {
+        background: linear-gradient(to bottom right, #DC2626, #EF4444);
+    }
+
+    .submit-btn:active {
+        transform: scale(0.95);
+    }
+
+
+    .songs-box,
+    .about-box,
+    .contact-us-box {
+        display: none;
+    }
+
+    #movies-box:checked~.container-main .main-box,
+    #songs:checked~.container-main .songs-box,
+    #about:checked~.container-main .about-box {
+        display: grid;
+        background: rgb(250 250 250/0.7);
+    }
+
+    #contact-us:checked~.container-main .contact-us-box {
+        display: flex;
+        background: rgb(250 250 250/0.7);
+        padding: 35px 50px;
+    }
+    .container-main .songs-box {
+        place-items: center;
+        margin: 20px 10px;
+        grid-gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        overflow: auto;
+    }
+    .container-main .about-box{
+        padding: 35px 30px;
+        font-size: 19px;
+    }
+    .order-cover {
+        border: 1px solid rgb(0 0 0/0.4);
+        border-radius: 8px;
+        width: 100%;
+        height: min-content;
+        font-size: 14px;
+    }
+
+
+    .order-row1 {
+        padding: 5px 12px;
+        border-bottom: 1px solid rgb(0 0 0/0.3);
+    }
+
+    .order-row2 {
+        padding: 5px 0;
+    }
+
+    .order-row1 span {
+        font-weight: 700;
+    }
+
+    .order-col2 {
+        padding: 0 15px;
+    }
+
+    .order-img {
+        width: 35%;
+    }
+
+    .order-cover .order-img img {
+        height: 100%;
+        width: 5rem;
+        object-fit: contain;
+        border-radius: 10px;
+        margin: auto;
+    }
+
+    .order-col2 {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .order-name {
+        font-weight: 700;
+        margin-left: 1;
+    }
+
+    .order-status {
+        display: flex;
+        align-items: center;
+    }
+
+    .order-amount {
+        padding-left: 2px;
+        font-weight: 700;
+    }
+
+
+    #place-order:checked~.place-order-backdrop {
+        background: rgb(0 0 0/0.6);
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        z-index: 1000;
+        transition: background 0.2s;
+    }
+
+    .place-order-box {
+        display: none;
+    }
+
+    #place-order:checked~.place-order-box {
+        font-family: 'Roboto', sans-serif;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        width: 80rem;
+        max-width: 95%;
+        height: 40rem;
+        z-index: 1001;
+        border-radius: 15px;
+        padding: 15px;
+    }
+
+    .size-margin {
+        display: flex;
+    }
+
+    .size-box {
+        border: 1px solid rgb(0 0 0/0.4);
+        font-size: 16px;
+        padding: 10px;
+        flex-grow: 1;
+        border-radius: 10px;
+        margin-right: 20px;
+    }
+
+    .size-box .size-text {
+        font-weight: 700;
+        margin: 0 0 6px 6px;
+    }
+
+    .size-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(8rem, 12rem));
+        grid-gap: 12px;
+        font-size: 14px;
+    }
+
+    .size-options .size {
+        white-space: nowrap;
+        border: 1px solid rgb(30 30 30);
+        min-width: 5rem;
+        max-width: min-content;
+        border-radius: 25px;
+        text-align: center;
+        padding: 2px 15px;
+        padding-top: 4px;
+        cursor: pointer;
+        font-weight: 500;
+    }
+
+    .size-options .size:hover {
+        background: rgb(0 0 0/0.1);
+    }
+
+    .size-options .size-selected {
+        border: 1px solid rgb(255, 0, 255);
+        min-width: 5rem;
+        max-width: min-content;
+        padding: 2px 15px;
+        padding-top: 4px;
+        white-space: nowrap;
+        border-radius: 25px;
+        padding: 3px 15px;
+        background: rgb(255 0 255/0.2);
+        color: rgb(255, 0, 242);
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .margin-box {
+        border: 1px solid rgb(0 0 0/0.4);
+        width: 160px;
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+    }
+
+
+    .margin-text {
+        font-weight: bold;
+        margin: 0 0 6px 0;
+        white-space: nowrap;
+    }
+
+    .margin-box input,
+    .quantity input {
+        background: rgb(229 231 235);
+        border-bottom: 1px solid black;
+        width: 6rem;
+        max-width: min-content;
+        text-align: center;
+        padding: 2px 4px;
+        margin-right: 16px;
+        font-weight: 500;
+    }
+
+    .quantity input {
+        border: 1px solid rgb(0 0 0/0.8);
+        margin: 0;
+        width: 4rem;
+        border-radius: 8px;
+        padding: 4px;
+    }
+
+    .margin-box input:focus-within {
+        border-bottom: 1px solid rgb(255 0 255);
+    }
+
+    .quantity input:focus-within {
+        border: 1px solid rgb(255 0 255);
+    }
+
+    .margin-box .rs-input {
+        display: flex;
+    }
+
+    .margin-box .rs {
+        font-size: 20px;
+        padding: 0 6px;
+    }
+
+    .contact-box-cover {
+        flex-grow: 1;
+        margin-top: 15px;
+
+    }
+
+    .contact-box {
+        border-radius: 10px;
+        padding: 25px;
+        border: 1px solid rgb(0 0 0/0.4);
+        display: grid;
+        flex-grow: 1;
+        height: 100%;
+        align-items: center;
+        box-shadow: 0 0 15px rgb(0 0 0/0.6) inset;
+    }
+
+    .final-img img {
+        width: 90px;
+        margin: auto;
+    }
+
+    .final-text {
+        font-size: 17px;
+        font-weight: 500;
+        overflow-wrap: break-word;
+    }
+
+    .product-final-details {
+        border: 1px solid rgb(0 0 0/0.4);
+        width: 25rem;
+        text-align: center;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 10px 30px;
+        flex-grow: 1;
+    }
+
+
+
+    .price-breakup {
+        font-weight: 600;
+    }
+
+    .cod-bag {
+        width: 30px;
+        /* height: 40px; */
+        background: white;
+    }
+
+    .cod {
+        font-weight: 500;
+    }
+
+    .price-break-details {
+        display: grid;
+        grid-auto-rows: auto;
+        grid-gap: 15px;
+    }
+
+    .final-price {
+        font-weight: 500;
+    }
+
+    .dial-fieldset {
+        max-width: 65px;
+        min-width: 65px;
+        text-align: center;
+        margin-right: 15px !important;
+    }
+
+    .dial-fieldset legend {
+        margin: 0 !important;
+    }
+
+    .contact-box .text {
+        position: absolute;
+        top: -12px;
+        left: 0;
+        font-size: 30px;
+        z-index: 5000;
+        padding: 0 6px;
+        margin: 0 10px;
+        font-weight: 500;
+        font-size: 16px;
+        background: #E5E7EB;
+        color: rgb(0 0 0/1);
+    }
+
+    .city-fieldset {
+        min-width: 150px;
+        max-width: 150px;
+        margin-right: 15px;
+        margin-right: 15px !important;
+    }
+
+    .contact-box .fieldset {
+        /* border: 1px solid rgb(0 0 0/0.6); */
+        width: 35rem;
+        margin: 0;
+        position: relative;
+    }
+
+    .contact-box input,
+    .contact-box .dial-text,
+    .contact-box textarea {
+        /* border: 1px solid red; */
+        font-size: 16px;
+        background: #E5E7EB;
+        padding: 10px 10px 0 10px;
+        border: 1px solid rgb(0 0 0/0.6);
+        border-radius: 7px;
+        resize: none;
+    }
+
+    .contact-box textarea{
+        padding: 20px;
+        width: 100%;
+        height: 150px;
+    }
+
+    .contact-box .fieldset {
+        width: 100%;
+    }
+
+    .contact-box input {
+        width: 100%;
+    }
+
+
+    .contact-box input:focus-within {
+        border:1px solid rgb(77 91 249);
+    }
+
+    .contact-box input:focus-within~.text {
+        color: rgb(77 91 249);
+    }
+
+.about-box{
+    overflow-y: scroll;
+}
+
+    @media screen and (max-width: 628px) {
+        .more-details-pc{
+            display: none;
+        }
+        .main-cover{
+            margin: 0 !important;
+        }
+        .container-main .about-box{
+            padding: 20px;
+        }
+        #contact-us:checked~.container-main .contact-us-box{
+            padding: 10px;
+        }
+        .orders>label{
+            margin-left: 7px;
+        }
+        .more-details-mobile{
+            display: unset;
+        }
+
+        .orders .svg-label {
+            padding: 0;
+        }
+
+        .orders .svg-label {
+            grid-template-columns: 30px;
+        }
+
+        .product-image {
+            margin: 7px;
+        }
+        .movie-cover{
+            margin: 20px 10px !important;
+        }
+        #contact-us:checked~.container-main .contact-us-box , .container-main .about-box{
+            padding: 30px 20px;
+        }
+
+        .container-main .about-box{
+            font-size: 16px;
+        }
+
+        .container-main{
+            grid-template-columns: 60px 1fr;
+            border-radius: 8px;
+        }
+
+        .svg-label span{
+            display: none;
+        }
+
+        .user-box .music-logo{
+            height: 50px;
+        }
+        .user-info svg{
+            height: 50px;
+        }
+        .container-main{
+            max-height: unset;
+            max-width: unset;
+            height: 98%;
+            width: 98%;
+        }
+
+        .contact-box , .para-cover{
+            box-shadow: none !important;
+            padding: 0 !important;
+            border: none !important;
+        }
+
+        .movie{
+            flex-direction: column;
+        }
+
+        .movie-songs{
+            margin: 0 !important;
+        }
+    }
+
+    @media screen and (max-width: 350px){
+        #contact-us:checked~.container-main .contact-us-box, .container-main .about-box{
+            padding: 10px 10px 10px 20px;
+            font-size: 15px;
+        }
+        .contact-box .text{
+            font-size: 14px;
+        }
+    }
+
+
+    /* LAST CSS  */
+
+    .main-box {
+
+        overflow: scroll;
+    }
+
+    .main-cover {
+        display: flex !important;
+        justify-content: center;
+        flex-wrap: wrap !important;
+        margin: 0 15px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .movie-cover {
+        position: relative;
+        text-align: center;
+    }
+
+    .movie-cover {
+        background: rgb(229, 231, 235);
+        width: min-content;
+        border-radius: 8px;
+        padding: 6px;
+        box-shadow: 0 0 15px rgb(0 0 0/0.6);
+        padding-bottom: 0;
+        height: min-content;
+        margin: 25px 45px;
+    }
+
+    .movie-img {
+        border: 1px solid black;
+        width: 180px;
+        height: 180px;
+        border-radius: 8px;
+    }
+
+    .movie-img img {
+        height: 100%;
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .movie-name {
+        margin: 5px 0;
+        font-size: 17px;
+        font-weight: 700;
+    }
+
+    .more-details {
+        height: 30px;
+        width: 30px;
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        fill: rgb(0, 128, 179);
+        cursor: pointer;
+    }
+
+    .more-details:hover {
+        fill: green;
+    }
+
+    .more-details:active {
+        transform: scale(0.9);
+    }
+
+    .movie-songs {
+        background: rgb(229, 231, 235);
+        border-radius: 8px;
+        display: none;
+        grid-template-rows: 1fr 1fr 1fr;
+        text-align: center;
+        width: 300px;
+        border: 1px solid rgb(0 0 0/0.5);
+        margin: 25px 0px;
+        box-shadow: 0 0 15px rgb(0 0 0/0.6);
+        padding: 5px 15px;
+        white-space: nowrap;
+        height: 217px;
+    }
+
+    .more-songs1 .movie-songs,
+    .more-songs2 .movie-songs,
+    .more-songs3 .movie-songs,
+    .more-songs4 .movie-songs,
+    .more-songs5 .movie-songs {
+        display: grid;
+    }
+
+    .movie {
+        display: flex;
+        justify-content: center;
+    }
+
+    .song1 {
+        display: flex;
+        align-items: center;
+    }
+
+    .music-details {
+        flex-grow: 1;
+    }
+
+    .music-img {
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        box-shadow: 0 0 8px rgb(0 0 0/0.5);
+        display: grid;
+        place-items: center;
+    }
+
+    .music-img img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .song-name {
+        font-weight: 700;
+    }
+
+    .name-duration,
+    .singer-type {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .song-cover {
+        justify-self: center;
+        border: 1px solid white;
+        margin: 10px;
+        width: 300px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: rgb(229, 231, 235);
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgb(0 0 0/0.6);
+        font-size: 17px;
+        padding: 0 10px 0 15px;
+        text-align: center;
+
+    }
+
+    .song-cover .img-cover {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .song-cover img {
+        width: 70px;
+        height: 55px;
+    }
+
+    .song-cover .duration {
+        font-weight: 600;
+    }
+
+    .top10 {
+        width: 100%;
+        text-align: center;
+        font-size: 35px;
+        font-weight: 900;
+        color: white;
+        text-decoration: underline;
+        margin: 10px 0;
+    }
+
+    .song-cover .img-cover:hover,
+    .music-img:hover img {
+        cursor: pointer;
+        transform: rotate(360deg);
+        transition: 1s;
+    }
+
+    .song-cover:hover,
+    .music-img:hover {
+        transform: scale(1.05);
+        transition: 0.2s;
+        cursor: pointer;
+    }
+
+    .song1 {
+        cursor: pointer;
+    }
+
+    .song-flex {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+    p span{
+        font-family: "Roboto";
+        font-weight: 600;
+    }
+    p{
+        text-align: justify;
+    }
+    .para-cover{
+        border-radius: 20px;
+        box-shadow: 0 0 15px rgb(0 0 0/0.6) inset;
+        padding: 25px;
+    }
+</style>
+
+<body>
+
+    <input id="movies-box" class="hidden" type="radio" name="song" checked>
+    <input id="songs" class="hidden" type="radio" name="song" >
+    <input id="about" class="hidden" type="radio" name="song">
+    <input id="contact-us" class="hidden" type="radio" name="song">
+
+    <div class="container-main">
+
+        <!-- --------- USER BoX --------  -->
+        <div class="user-box">
+            <img class="music-logo" src="https://i.ibb.co/mBY3DRJ/HAUA.png" alt="Meesho">
+
+            <div class="user-info-cover">
+                <div class="user-info">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.8 61.8" xmlns:v="https://vecta.io/nano">
+                        <circle cx="30.9" cy="30.9" fill="#ffc200" r="30.9" />
+                        <g fill-rule="evenodd">
+                            <path
+                                d="M52.587 52.908a30.895 30.895 0 0 1-43.667-.291 9.206 9.206 0 0 1 4.037-4.832 19.799 19.799 0 0 1 4.075-2.322c-2.198-7.553 3.777-11.266 6.063-12.335 0 3.487 3.265 1.173 7.317 1.217 3.336.037 9.933 3.395 9.933-1.035 3.67 1.086 7.67 8.08 4.917 12.377a17.604 17.604 0 0 1 3.181 2.002 10.192 10.192 0 0 1 4.144 5.22z"
+                                fill="#677079" />
+                            <path
+                                d="M24.032 38.68l14.92.09v3.437l-.007.053a2.784 2.784 0 0 1-.07.462l-.05.341-.03.071c-.966 5.074-5.193 7.035-7.803 8.401-2.75-1.498-6.638-4.197-6.947-8.972l-.013-.059v-.2a8.897 8.897 0 0 1-.004-.207c0 .036.003.07.004.106z"
+                                fill="#f9dca4" />
+                            <path
+                                d="M38.953 38.617v4.005a7.167 7.167 0 0 1-.095 1.108 6.01 6.01 0 0 1-.38 1.321c-5.184 3.915-13.444.704-14.763-5.983z"
+                                opacity=".11" />
+                            <path
+                                d="M18.104 25.235c-4.94 1.27-.74 7.29 2.367 7.264a19.805 19.805 0 0 1-2.367-7.264zm25.733 0c4.94 1.27.74 7.29-2.368 7.263a19.8 19.8 0 0 0 2.368-7.263z"
+                                fill="#f9dca4" />
+                            <path d="M30.733 11.361c20.523 0 12.525 32.446 0 32.446-11.83 0-20.523-32.446 0-32.446z"
+                                fill="#ffe8be" />
+                            <path
+                                d="M21.047 22.105a1.738 1.738 0 0 1-.414 2.676c-1.45 1.193-1.503 5.353-1.503 5.353-.56-.556-.547-3.534-1.761-5.255s-2.032-13.763 4.757-18.142a4.266 4.266 0 0 0-.933 3.6s4.716-6.763 12.54-6.568a5.029 5.029 0 0 0-2.487 3.26s6.84-2.822 12.54.535a13.576 13.576 0 0 0-4.145 1.947c2.768.076 5.443.59 7.46 2.384a3.412 3.412 0 0 0-2.176 4.38c.856 3.503.936 6.762.107 8.514s-1.22.621-1.739 4.295a1.609 1.609 0 0 1-.77 1.214c-.02.266.382-3.756-.655-4.827s-.385-2.385.029-3.163c2.89-5.427-5.765-7.886-10.496-7.88-4.103.005-14 1.87-10.354 7.677z"
+                                fill="#8a5c42" />
+                            <path
+                                d="M19.79 49.162c.03.038 10.418 13.483 22.63-.2-1.475 4.052-7.837 7.27-11.476 7.26-6.95-.02-10.796-5.6-11.154-7.06z"
+                                fill="#434955" />
+                            <path
+                                d="M36.336 61.323l-1.237.192v-8.937a.576.576 0 0 1 .618-.516.576.576 0 0 1 .619.516v8.745zm-9.82.166q-.622-.089-1.237-.2v-8.711a.576.576 0 0 1 .618-.516.576.576 0 0 1 .62.516z"
+                                fill="#e6e6e6" />
+                        </g>
+                    </svg>
+                    <!-- <div class="user-text">Hi User</div> -->
+                </div>
+                <div class="orders">
+                    <label class="movies-box" for="movies-box">
+                        <b></b>
+                        <b></b>
+                        <div class="svg-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+                            </svg>
+                            <span>Movies</span>
+                        </div>
+                    </label>
+                    <label class="songs" for="songs">
+                        <b></b>
+                        <b></b>
+                        <div class="svg-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z" />
+                            </svg>
+                           
+                                <span>Songs</span>
+                         
+                        </div>
+
+                    </label>
+                    <label class="about" for="about">
+                        <b></b>
+                        <b></b>
+                        <div class="svg-label">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sidebar-icons" viewBox="0 0 1792 1792"><path d="M1600 1405q0 120-73 189.5t-194 69.5h-874q-121 0-194-69.5t-73-189.5q0-53 3.5-103.5t14-109 26.5-108.5 43-97.5 62-81 85.5-53.5 111.5-20q9 0 42 21.5t74.5 48 108 48 133.5 21.5 133.5-21.5 108-48 74.5-48 42-21.5q61 0 111.5 20t85.5 53.5 62 81 43 97.5 26.5 108.5 14 109 3.5 103.5zm-320-893q0 159-112.5 271.5t-271.5 112.5-271.5-112.5-112.5-271.5 112.5-271.5 271.5-112.5 271.5 112.5 112.5 271.5z"/></svg>
+
+
+
+                            <span>About</span>
+                        </div>
+
+                    </label>
+                    <label class="contact-us" for="contact-us">
+                        <b></b>
+                        <b></b>
+                        <div class="svg-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="h-6 w-6 truck" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <span>Contact Us</span>
+                        </div>
+
+                    </label>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- --------- MAIN BoX --------  -->
+
+        <div class="main-box">
+
+            <div class="main-cover">
+                <div id="movie1" class="movie">
+                    <div class="movie-cover">
+                        <div class="movie-img">
+                            <img src="./images/war.jpg" alt="">
+                        </div>
+                        <div class="movie-name">
+                            War
+                        </div>
+                        <svg onclick="moredetails1()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            class="more-details more-details-pc" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <svg onclick="moredetails1()" xmlns="http://www.w3.org/2000/svg" class="more-details more-details-mobile hidden" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clip-rule="evenodd" />
+                          </svg>
+
+                    </div>
+                    <div class="movie-songs">
+
+                        <div class="song1">
+
+                            <div class="music-img">
+                                <img src="./images/images.png" alt="">
+                            </div>
+                            <div class="music-details">
+                                <div class="name-duration">
+                                    <span class="song-name">
+                                        Ghungroo
+                                    </span>
+                                    <span class="duration">
+                                        05:03
+                                    </span>
+                                </div>
+                                <div class="singer-type">
+                                    <div class="singer">
+                                        Vishal & Shekhar
+                                    </div>
+                                    <div class="type">
+                                        Romantic
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="song1">
+
+                            <div class="music-img">
+                                <img src="./images/images.png" alt="">
+                            </div>
+                            <div class="music-details">
+                                <div class="name-duration">
+                                    <span class="song-name">
+                                        War Theme
+                                    </span>
+                                    <span class="duration">
+                                        02:00
+                                    </span>
+                                </div>
+                                <div class="singer-type">
+                                    <div class="singer">
+                                        YRF Music
+                                    </div>
+                                    <div class="type">
+                                        Instrumental
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="song1">
+
+                            <div class="music-img">
+                                <img src="./images/images.png" alt="">
+                            </div>
+                            <div class="music-details">
+                                <div class="name-duration">
+                                    <span class="song-name">
+                                        jai Jai Shivshankar
+                                    </span>
+                                    <span class="duration">
+                                        03:50
+                                    </span>
+                                </div>
+                                <div class="singer-type">
+                                    <div class="singer">
+                                        Vishal & Shekhar
+                                    </div>
+                                    <div class="type">
+                                        Festival
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="movie2" class="movie">
+                    <div class="movie-cover">
+                        <div class="movie-img">
+                            <img src="./images/chhichhore.jpg" alt="">
+                        </div>
+                        <div class="movie-name">
+                            Chhichhore
+                        </div>
+                        <svg onclick="moredetails2()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            class="more-details" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+                    </div>
+                    <div class="movie-songs">
+
+                        <div class="song1">
+
+                            <div class="music-img">
+                                <img src="./images/images.png" alt="">
+                            </div>
+                            <div class="music-details">
+                                <div class="name-duration">
+                                    <span class="song-name">
+                                        Fikar Not
+                                    </span>
+                                    <span class="duration">
+                                        02:34
+                                    </span>
+                                </div>
+                                <div class="singer-type">
+                                    <div class="singer">
+                                        Nakash Aziz
+                                    </div>
+                                    <div class="type">
+                                        SoundTrack
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="song1">
+
+                            <div class="music-img">
+                                <img src="./images/images.png" alt="">
+                            </div>
+                            <div class="music-details">
+                                <div class="name-duration">
+                                    <span class="song-name">
+                                        Woh Din
+                                    </span>
+                                    <span class="duration">
+                                        04:18
+                                    </span>
+                                </div>
+                                <div class="singer-type">
+                                    <div class="singer">
+                                        Arijit Singh
+                                    </div>
+                                    <div class="type">
+                                        Memorial
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="song1">
+
+                            <div class="music-img">
+                                <img src="./images/images.png" alt="">
+                            </div>
+                            <div class="music-details">
+                                <div class="name-duration">
+                                    <span class="song-name">
+                                        Khairiyat
+                                    </span>
+                                    <span class="duration">
+                                        04:40
+                                    </span>
+                                </div>
+                                <div class="singer-type">
+                                    <div class="singer">
+                                        Arijit Singh
+                                    </div>
+                                    <div class="type">
+                                        Romantic
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="movie3" class="movie">
+                    <div class="movie-cover">
+                        <div class="movie-img">
+                            <img src="./images/dangal.jpg" alt="">
+                        </div>
+                        <div class="movie-name">
+                            Dangal
+                        </div>
+                        <svg onclick="moredetails3()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            class="more-details" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+                    </div>
+                    <div class="movie-songs">
+
+                        <div class="song1">
+
+                            <div class="music-img">
+                                <img src="./images/images.png" alt="">
+                            </div>
+                            <div class="music-details">
+                                <div class="name-duration">
+                                    <span class="song-name">
+                                        Haanikarak Bapu
+                                    </span>
+                                    <span class="duration">
+                                        04:22
+                                    </span>
+                                </div>
+                                <div class="singer-type">
+                                    <div class="singer">
+                                        Sartaz khan Barna
+                                    </div>
+                                    <div class="type">
+                                        Soundtrack
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="song1">
+
+                            <div class="music-img">
+                                <img src="./images/images.png" alt="">
+                            </div>
+                            <div class="music-details">
+                                <div class="name-duration">
+                                    <span class="song-name">
+                                        Dhaakad
+                                    </span>
+                                    <span class="duration">
+                                        02:56
+                                    </span>
+                                </div>
+                                <div class="singer-type">
+                                    <div class="singer">
+                                        Raftaar
+                                    </div>
+                                    <div class="type">
+                                        Soundtrack
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="song1">
+
+                            <div class="music-img">
+                                <img src="./images/images.png" alt="">
+                            </div>
+                            <div class="music-details">
+                                <div class="name-duration">
+                                    <span class="song-name">
+                                        Gilehriyaan
+                                    </span>
+                                    <span class="duration">
+                                        03:40
+                                    </span>
+                                </div>
+                                <div class="singer-type">
+                                    <div class="singer">
+                                        Jonita Gandhi
+                                    </div>
+                                    <div class="type">
+                                        Soundtrack
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div id="movie4" class="movie">
+                    <div class="movie-cover">
+                        <div class="movie-img">
+                            <img src="./images/roohi.jpeg" alt="">
+                        </div>
+                        <div class="movie-name">
+                            Roohi
+                        </div>
+                        <svg onclick="moredetails4()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            class="more-details" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+                    </div>
+                    <div class="movie-songs">
+
+                        <div class="song1">
+
+                            <div class="music-img">
+                                <img src="./images/images.png" alt="">
+                            </div>
+                            <div class="music-details">
+                                <div class="name-duration">
+                                    <span class="song-name">
+                                        Panghat
+                                    </span>
+                                    <span class="duration">
+                                        02:59
+                                    </span>
+                                </div>
+                                <div class="singer-type">
+                                    <div class="singer">
+                                        Asees Kaur
+                                    </div>
+                                    <div class="type">
+                                        Soundtrack
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="song1">
+
+                            <div class="music-img">
+                                <img src="./images/images.png" alt="">
+                            </div>
+                            <div class="music-details">
+                                <div class="name-duration">
+                                    <span class="song-name">
+                                        Nadiyon
+                                    </span>
+                                    <span class="duration">
+                                        02:44
+                                    </span>
+                                </div>
+                                <div class="singer-type">
+                                    <div class="singer">
+                                        Rashmeet Kaur
+                                    </div>
+                                    <div class="type">
+                                        Romantic
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="song1">
+
+                            <div class="music-img">
+                                <img src="./images/images.png" alt="">
+                            </div>
+                            <div class="music-details">
+                                <div class="name-duration">
+                                    <span class="song-name">
+                                        Bhootni
+                                    </span>
+                                    <span class="duration">
+                                        02:27
+                                    </span>
+                                </div>
+                                <div class="singer-type">
+                                    <div class="singer">
+                                        Mika Singh
+                                    </div>
+                                    <div class="type">
+                                        Horrer
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div id="movie5" class="movie">
+                    <div class="movie-cover">
+                        <div class="movie-img">
+                            <img src="./images/saga.jpg" alt="">
+                        </div>
+                        <div class="movie-name">
+                            Mumbai Saga
+                        </div>
+                        <svg onclick="moredetails5()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            class="more-details" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+
+                    </div>
+                    <div class="movie-songs">
+
+                        <div class="song1">
+
+                            <div class="music-img">
+                                <img src="./images/images.png" alt="">
+                            </div>
+                            <div class="music-details">
+                                <div class="name-duration">
+                                    <span class="song-name">
+                                        Shor Machega
+                                    </span>
+                                    <span class="duration">
+                                        03:28
+                                    </span>
+                                </div>
+                                <div class="singer-type">
+                                    <div class="singer">
+                                        YoYo Honey Singh
+                                    </div>
+                                    <div class="type">
+                                        Soundtrack
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="song1">
+
+                            <div class="music-img">
+                                <img src="./images/images.png" alt="">
+                            </div>
+                            <div class="music-details">
+                                <div class="name-duration">
+                                    <span class="song-name">
+                                        Danka Baja
+                                    </span>
+                                    <span class="duration">
+                                        03:03
+                                    </span>
+                                </div>
+                                <div class="singer-type">
+                                    <div class="singer">
+                                        Devi Negi
+                                    </div>
+                                    <div class="type">
+                                        Party
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="song1">
+
+                            <div class="music-img">
+                                <img src="./images/images.png" alt="">
+                            </div>
+                            <div class="music-details">
+                                <div class="name-duration">
+                                    <span class="song-name">
+                                        Lut Gaye
+                                    </span>
+                                    <span class="duration">
+                                        03:48
+                                    </span>
+                                </div>
+                                <div class="singer-type">
+                                    <div class="singer">
+                                        Jubin Nautiyal
+                                    </div>
+                                    <div class="type">
+                                        Romantic
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- --------- songs BoX --------  -->
+
+        <div class="songs-box">
+
+
+            <div class="song-cover">
+                <div class="img-cover">
+                    <img src="./images/logo1.png" alt="">
+                </div>
+                <div class="song-flex">
+                    <div>
+                        <div class="song-name">Bad Habits</div>
+                        <div class="singer">Ed Sheeran</div>
+                    </div>
+                    <div>
+                        <div class="duration">3:15</div>
+                        <div>Pop</div>
+                    </div>
+                </div>
+            </div>
+            <div class="song-cover">
+                <div class="img-cover">
+                    <img src="./images/logo1.png" alt="">
+                </div>
+                <div class="song-flex">
+                    <div>
+                        <div class="song-name">Levitating</div>
+                        <div class="singer">Dua lipa</div>
+                    </div>
+                    <div>
+                        <div class="duration">3:23</div>
+                        <div>Pop</div>
+                    </div>
+                </div>
+            </div>
+            <div class="song-cover">
+                <div class="img-cover">
+                    <img src="./images/logo1.png" alt="">
+                </div>
+                <div class="song-flex">
+                    <div>
+                        <div class="song-name">Montero</div>
+                        <div class="singer">Lil nas x</div>
+                    </div>
+                    <div>
+                        <div class="duration">2:17</div>
+                        <div>Pop</div>
+                    </div>
+                </div>
+            </div>
+            <div class="song-cover">
+                <div class="img-cover">
+                    <img src="./images/logo1.png" alt="">
+                </div>
+                <div class="song-flex">
+                    <div>
+                        <div class="song-name">Astronaut in ocean</div>
+                        <div class="singer">Masked wolf</div>
+                    </div>
+                    <div>
+                        <div class="duration">2:12</div>
+                        <div>Pop</div>
+                    </div>
+                </div>
+            </div>
+            <div class="song-cover">
+                <div class="img-cover">
+                    <img src="./images/logo1.png" alt="">
+                </div>
+                <div class="song-flex">
+                    <div>
+                        <div class="song-name">Kun faya kun</div>
+                        <div class="singer">A R Rahman</div>
+                    </div>
+                    <div>
+                        <div class="duration">7:50</div>
+                        <div>Sufi</div>
+                    </div>
+                </div>
+            </div>
+            <div class="song-cover">
+                <div class="img-cover">
+                    <img src="./images/logo1.png" alt="">
+                </div>
+                <div class="song-flex">
+                    <div>
+                        <div class="song-name">Aadat</div>
+                        <div class="singer">Atif Aslam</div>
+                    </div>
+                    <div>
+                        <div class="duration">5:53</div>
+                        <div>Heartbreak</div>
+                    </div>
+                </div>
+            </div>
+            <div class="song-cover">
+                <div class="img-cover">
+                    <img src="./images/logo1.png" alt="">
+                </div>
+                <div class="song-flex">
+                    <div>
+                        <div class="song-name">Judai</div>
+                        <div class="singer">Pritam</div>
+                    </div>
+                    <div>
+                        <div class="duration">5:02</div>
+                        <div>Heartbreak</div>
+                    </div>
+                </div>
+            </div>
+            <div class="song-cover">
+                <div class="img-cover">
+                    <img src="./images/logo1.png" alt="">
+                </div>
+                <div class="song-flex">
+                    <div>
+                        <div class="song-name">Jo Bhi Main</div>
+                        <div class="singer">Mohit Chauhan</div>
+                    </div>
+                    <div>
+                        <div class="duration">4:33</div>
+                        <div>Heartbreak</div>
+                    </div>
+                </div>
+            </div>
+            <div class="song-cover">
+                <div class="img-cover">
+                    <img src="./images/logo1.png" alt="">
+                </div>
+                <div class="song-flex">
+                    <div>
+                        <div class="song-name">Beete Lamhein</div>
+                        <div class="singer">kk</div>
+                    </div>
+                    <div>
+                        <div class="duration">4:58</div>
+                        <div>Heartbreak</div>
+                    </div>
+                </div>
+            </div>
+            <div class="song-cover">
+                <div class="img-cover">
+                    <img src="./images/logo1.png" alt="">
+                </div>
+                <div class="song-flex">
+                    <div>
+                        <div class="song-name">Marr Jaen</div>
+                        <div class="singer">Atif Aslam</div>
+                    </div>
+                    <div>
+                        <div class="duration">4:18</div>
+                        <div>Heartbreak</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- --------- about BoX --------  -->
+
+        <div class="about-box items-center justify-center">
+            <div class="h-full w-full grid place-items-center para-cover">
+            <p class="p1">
+            With <span>HAUA</span> Songs, it’s easy to find the right music for every moment – on your phone, your computer, your
+            tablet and more.
+        </p>
+
+        <p class="p2">
+            There are plenty of information about tracks and episodes on <span>HAUA</span> Songs. So whether you’re behind the wheel,
+            working out, partying or relaxing, the right music is always at your
+            fingertips. Choose what you want to listen to, or let us surprise you.
+            You can also browse through the collections of top songs and movies for which there is plenty of songs in
+            here.
+        </p>
+
+        <p class="p3">
+            This is made by <span>Utkarsh, Abhishek, Akshat</span> and <span></span> Harsh</span> That's why we call out website as HAUA Songs.
+            Feel the tunes and enjoy surfing.
+        </p>
+    </div>
+        </div>
+
+        <!-- --------- contact-us BoX --------  -->
+
+        <div class="contact-us-box items-center justify-center">
+            <div class="contact-box">
+
+                <div class="fieldset">
+                    <input type="text">
+                    <div class="text">Enter Your Name</div>
+                </div>
+
+                
+                <div class="fieldset">
+                    <input type="text">
+                    <div class="text">Email Address</div>
+                </div>
+
+                <div class="flex">
+                    <div class="fieldset dial-fieldset">
+                        <div class="dial-text">+91</div>
+                        <div class="text">Dial</div>
+                    </div>
+
+                    <div class="fieldset phone-fieldset">
+                        <input type="text">
+                        <div class="text">Phone Number</div>
+                    </div>
+                </div>
+
+
+                <div class="fieldset">
+                    <textarea ></textarea>
+                    <div class="text">Message</div>
+                </div>
+
+                <div class="submit-btn">Submit</div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <script src="tilt.js"></script>
+    <script>
+        function moredetails1() {
+            var element = document.getElementById("movie1");
+            element.classList.toggle("more-songs1");
+        }
+        function moredetails2() {
+            var element = document.getElementById("movie2");
+            element.classList.toggle("more-songs2");
+        }
+        function moredetails3() {
+            var element = document.getElementById("movie3");
+            element.classList.toggle("more-songs3");
+        }
+        function moredetails4() {
+            var element = document.getElementById("movie4");
+            element.classList.toggle("more-songs4");
+        }
+        function moredetails5() {
+            var element = document.getElementById("movie5");
+            element.classList.toggle("more-songs5");
+        }
+
+        VanillaTilt.init(document.querySelectorAll(".movie-cover"), {
+            max: 10,
+            speed: 500,
+        });
+        VanillaTilt.init(document.querySelectorAll(".movie-songs"), {
+            max: 10,
+            speed: 500,
+        });
+        VanillaTilt.init(document.querySelectorAll(".song-cover"), {
+            max: 10,
+            speed: 500,
+        });
+
+    </script>
+</body>
+
+</html>
