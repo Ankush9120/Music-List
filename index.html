@@ -444,12 +444,30 @@
     @media screen and (max-width: 628px) {
         .copyright {
 
-            width: calc(100% - 57px) !important;
+            width: calc(100% - 50px) !important;
             font-size: 15px !important;
+        }
+
+        .song-cover {
+            font-size: 15px;
+        }
+
+        .song-cover img {
+            width: 60px !important;
+            height: 45px !important;
+        }
+
+
+        .container-main .songs-box {
+            margin: 15px 4px;
         }
 
         .more-details-pc {
             display: none;
+        }
+
+        .main-box {
+            margin: 4px;
         }
 
         .main-cover {
@@ -538,12 +556,13 @@
         }
     }
 
-    @media screen and (max-width: 425px){
-        .movie-songs{
-            padding: 5px 8px !important;
-            transform: scale(0.9);
+    @media screen and (max-width: 425px) {
+        .movie-songs {
+            padding: 5px 8px 5px 4px !important !important;
+            transform: scale(0.9) !important;
         }
     }
+
     @media screen and (max-width: 350px) {
 
         #contact-us:checked~.container-main .contact-us-box {
@@ -682,12 +701,19 @@
 
     .song-name {
         font-weight: 700;
+        white-space: nowrap;
+        text-align: start;
     }
+
+    .singer{
+        text-align: start;
+    }
+
 
     .name-duration,
     .singer-type {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
     }
 
     .song-cover {
@@ -702,8 +728,8 @@
         background: white;
         border-radius: 15px;
         box-shadow: 0 0 15px rgb(0 0 0/0.7);
-        font-size: 17px;
-        padding: 0 10px 0 15px;
+        font-size: 16px;
+        padding: 0 10px 0 10px;
         text-align: center;
 
     }
@@ -717,6 +743,7 @@
     .song-cover img {
         width: 70px;
         height: 55px;
+        margin-right: 10px !important;
     }
 
     .song-cover .duration {
@@ -754,7 +781,7 @@
     .song-flex {
         width: 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
     }
 
     p span {
@@ -786,6 +813,15 @@
             width: 260px;
             padding: 0 5px 0 10px;
             margin-left: 0;
+            transform: scale(0.9) !important;
+        }
+
+        .container-main .songs-box {
+            grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+        }
+
+        .movie {
+            width: 275px;
         }
 
         .song-cover img {
@@ -803,6 +839,25 @@
         }
     }
 
+    @media screen and (max-width:350px) {
+        .movie {
+            width: 254px;
+        }
+
+        .movie-songs {
+            transform: scale(0.8) !important;
+        }
+
+        .song-cover {
+
+            transform: scale(0.8) !important;
+        }
+
+        .container-main .songs-box {
+            grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+        }
+    }
+
     .copyright {
         font-family: "Roboto";
         position: absolute;
@@ -814,7 +869,7 @@
         text-align: center;
         bottom: 0;
         right: 0;
-        width: calc(100% - 247px);
+        width: calc(100% - 240px);
         white-space: nowrap;
     }
 </style>
@@ -1353,9 +1408,15 @@
                             Mumbai Saga
                         </div>
                         <svg onclick="moredetails5()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                            class="more-details" fill="currentColor">
+                            class="more-details more-details-pc" fill="currentColor">
                             <path fill-rule="evenodd"
                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <svg onclick="moredetails5()" xmlns="http://www.w3.org/2000/svg"
+                            class="more-details more-details-mobile hidden" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z"
                                 clip-rule="evenodd" />
                         </svg>
 
@@ -1645,7 +1706,7 @@
 
 
                 <div class="fieldset">
-                    <input type="text">
+                    <input type="email">
                     <div class="text">Email Address</div>
                 </div>
 
@@ -1656,7 +1717,7 @@
                     </div>
 
                     <div class="fieldset phone-fieldset">
-                        <input type="text">
+                        <input type="tel" maxlength="10">
                         <div class="text">Phone Number</div>
                     </div>
                 </div>
