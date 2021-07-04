@@ -62,19 +62,22 @@
         box-shadow: 0 0 15px rgb(0 0 0/0.8);
         overflow: hidden;
         background: rgb(250 250 250);
+        position: relative;
     }
 
-   
+
 
     .main-box::-webkit-scrollbar,
     .songs-box::-webkit-scrollbar,
-    .about-box::-webkit-scrollbar {
+    .about-box::-webkit-scrollbar,
+    .para-cover::-webkit-scrollbar {
         width: 10px;
     }
 
     .main-box::-webkit-scrollbar-thumb,
     .songs-box::-webkit-scrollbar-thumb,
-    .about-box::-webkit-scrollbar-thumb {
+    .about-box::-webkit-scrollbar-thumb,
+    .para-cover::-webkit-scrollbar-thumb {
         background: rgb(0 0 0/0.6);
         border-radius: 8px;
     }
@@ -94,7 +97,7 @@
         background: linear-gradient(to bottom right, #1D4ED8, #2563EB);
     }
 
-   
+
     .user-panel {
         height: 100%;
         background: rgb(250 250 250/0.2);
@@ -117,7 +120,7 @@
     }
 
     .main-box {
-        padding: 10px 0px;
+        /* padding: 10px 0px; */
         display: none;
         position: relative;
         margin: 10px;
@@ -327,7 +330,11 @@
     #contact-us:checked~.container-main .contact-us-box {
         display: flex;
         background: white;
-        padding: 35px 50px;
+        padding: 20px 50px 50px 50px;
+    }
+
+    #about:checked~.container-main .about-box {
+        display: flex;
     }
 
     .container-main .songs-box {
@@ -339,12 +346,12 @@
     }
 
     .container-main .about-box {
-        padding: 35px 30px;
+        padding: 15px 30px 44px 30px;
         font-size: 19px;
     }
 
 
-  
+
     .contact-box-cover {
         flex-grow: 1;
         margin-top: 15px;
@@ -362,7 +369,7 @@
         box-shadow: 0 0 15px rgb(0 0 0/0.6) inset;
     }
 
-   
+
 
     .final-price {
         font-weight: 500;
@@ -435,6 +442,12 @@
     }
 
     @media screen and (max-width: 628px) {
+        .copyright {
+
+            width: calc(100% - 57px) !important;
+            font-size: 15px !important;
+        }
+
         .more-details-pc {
             display: none;
         }
@@ -472,9 +485,12 @@
             margin: 20px 10px !important;
         }
 
-        #contact-us:checked~.container-main .contact-us-box,
-        .container-main .about-box {
+        #contact-us:checked~.container-main .contact-us-box {
             padding: 30px 20px;
+        }
+
+        .container-main .about-box {
+            padding: 15px 15px 40px 30px;
         }
 
         .container-main .about-box {
@@ -512,6 +528,7 @@
             border: none !important;
         }
 
+
         .movie {
             flex-direction: column;
         }
@@ -521,11 +538,16 @@
         }
     }
 
+    @media screen and (max-width: 425px){
+        .movie-songs{
+            padding: 5px 8px !important;
+            transform: scale(0.9);
+        }
+    }
     @media screen and (max-width: 350px) {
 
-        #contact-us:checked~.container-main .contact-us-box,
-        .container-main .about-box {
-            padding: 10px 10px 10px 20px;
+        #contact-us:checked~.container-main .contact-us-box {
+            padding: 10px;
             font-size: 15px;
         }
 
@@ -564,7 +586,7 @@
         box-shadow: 0 0 15px rgb(0 0 0/0.7);
         padding-bottom: 0;
         height: min-content;
-        margin: 25px 45px;
+        margin: 20px 45px;
     }
 
     .movie-img {
@@ -611,6 +633,7 @@
         grid-template-rows: 1fr 1fr 1fr;
         text-align: center;
         width: 300px;
+        max-width: 100%;
         border: 1px solid rgb(0 0 0/0.5);
         margin: 25px 0px;
         box-shadow: 0 0 15px rgb(0 0 0/0.6);
@@ -741,12 +764,20 @@
 
     p {
         text-align: justify;
+        margin: 6px 15px;
     }
 
     .para-cover {
         border-radius: 20px;
         box-shadow: 0 0 15px rgb(0 0 0/0.6) inset;
-        padding: 25px;
+        padding: 20px 15px;
+    }
+
+
+    .para-cover {
+        overflow: auto !important;
+        display: grid;
+        place-items: center;
     }
 
     @media screen and (max-width: 400px) {
@@ -762,10 +793,29 @@
             height: 45px;
         }
 
-        .songs-box{
+        .songs-box {
             grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
             margin: 20px 5px 20px 0;
         }
+
+        .container-main .about-box {
+            padding: 15px 8px 40px 15px;
+        }
+    }
+
+    .copyright {
+        font-family: "Roboto";
+        position: absolute;
+        z-index: 2000;
+        background: rgb(77 91 249);
+        font-size: 17px;
+        color: white;
+        padding: 2px 10px;
+        text-align: center;
+        bottom: 0;
+        right: 0;
+        width: calc(100% - 247px);
+        white-space: nowrap;
     }
 </style>
 
@@ -777,6 +827,7 @@
     <input id="contact-us" class="hidden" type="radio" name="song">
 
     <div class="container-main">
+        <div class="copyright">Copyright &copy; 2021 HAUA Songs</div>
 
         <!-- --------- USER BoX --------  -->
         <div class="user-box">
@@ -994,9 +1045,15 @@
                             Chhichhore
                         </div>
                         <svg onclick="moredetails2()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                            class="more-details" fill="currentColor">
+                            class="more-details more-details-pc" fill="currentColor">
                             <path fill-rule="evenodd"
                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <svg onclick="moredetails2()" xmlns="http://www.w3.org/2000/svg"
+                            class="more-details more-details-mobile hidden" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z"
                                 clip-rule="evenodd" />
                         </svg>
 
@@ -1090,9 +1147,15 @@
                             Dangal
                         </div>
                         <svg onclick="moredetails3()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                            class="more-details" fill="currentColor">
+                            class="more-details more-details-pc" fill="currentColor">
                             <path fill-rule="evenodd"
                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <svg onclick="moredetails3()" xmlns="http://www.w3.org/2000/svg"
+                            class="more-details more-details-mobile hidden" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z"
                                 clip-rule="evenodd" />
                         </svg>
 
@@ -1188,9 +1251,15 @@
                             Roohi
                         </div>
                         <svg onclick="moredetails4()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                            class="more-details" fill="currentColor">
+                            class="more-details more-details-pc" fill="currentColor">
                             <path fill-rule="evenodd"
                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <svg onclick="moredetails4()" xmlns="http://www.w3.org/2000/svg"
+                            class="more-details more-details-mobile hidden" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z"
                                 clip-rule="evenodd" />
                         </svg>
 
@@ -1373,7 +1442,6 @@
                 </div>
             </div>
 
-
         </div>
 
         <!-- --------- songs BoX --------  -->
@@ -1531,13 +1599,16 @@
                     </div>
                 </div>
             </div>
+            <div style="color : white">
+                .
+            </div>
 
         </div>
 
         <!-- --------- about BoX --------  -->
 
-        <div class="about-box items-center justify-center">
-            <div class="h-full w-full grid place-items-center para-cover">
+        <div class="about-box">
+            <div class="para-cover">
                 <p class="p1">
                     With <span>HAUA</span> Songs, it’s easy to find the right music for every moment – on your phone,
                     your computer, your
