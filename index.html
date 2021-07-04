@@ -145,12 +145,14 @@
     }
 
     .main-box::-webkit-scrollbar,
-    .songs-box::-webkit-scrollbar , .about-box::-webkit-scrollbar {
+    .songs-box::-webkit-scrollbar,
+    .about-box::-webkit-scrollbar {
         width: 10px;
     }
 
     .main-box::-webkit-scrollbar-thumb,
-    .songs-box::-webkit-scrollbar-thumb , .about-box::-webkit-scrollbar-thumb {
+    .songs-box::-webkit-scrollbar-thumb,
+    .about-box::-webkit-scrollbar-thumb {
         background: rgb(0 0 0/0.6);
         border-radius: 8px;
     }
@@ -388,6 +390,7 @@
         position: relative;
         margin: 10px;
     }
+
     .product-image-box {
         border-left: 1px solid rgb(0 0 0/0.3);
         border-radius: 0 20px 20px 0;
@@ -534,10 +537,11 @@
     #contact-us:checked~.container-main .contact-us svg {
         stroke: black;
     }
-    #about:checked~.container-main .about svg{
+
+    #about:checked~.container-main .about svg {
         fill: black;
     }
-  
+
 
     .orders>label>b:nth-child(1),
     .orders>label>b:nth-child(2) {
@@ -713,20 +717,23 @@
 
     #contact-us:checked~.container-main .contact-us-box {
         display: flex;
-        background: rgb(250 250 250/0.7);
+        background: white;
         padding: 35px 50px;
     }
+
     .container-main .songs-box {
         place-items: center;
-        margin: 20px 10px;
+        margin: 20px 5px;
         grid-gap: 30px;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         overflow: auto;
     }
-    .container-main .about-box{
+
+    .container-main .about-box {
         padding: 35px 30px;
         font-size: 19px;
     }
+
     .order-cover {
         border: 1px solid rgb(0 0 0/0.4);
         border-radius: 8px;
@@ -1011,9 +1018,9 @@
         z-index: 5000;
         padding: 0 6px;
         margin: 0 10px;
-        font-weight: 500;
+        font-weight: 600;
         font-size: 16px;
-        background: #E5E7EB;
+        background: white;
         color: rgb(0 0 0/1);
     }
 
@@ -1036,14 +1043,14 @@
     .contact-box textarea {
         /* border: 1px solid red; */
         font-size: 16px;
-        background: #E5E7EB;
+        background: white;
         padding: 10px 10px 0 10px;
         border: 1px solid rgb(0 0 0/0.6);
         border-radius: 7px;
         resize: none;
     }
 
-    .contact-box textarea{
+    .contact-box textarea {
         padding: 20px;
         width: 100%;
         height: 150px;
@@ -1059,34 +1066,39 @@
 
 
     .contact-box input:focus-within {
-        border:1px solid rgb(77 91 249);
+        border: 1px solid rgb(77 91 249);
     }
 
     .contact-box input:focus-within~.text {
         color: rgb(77 91 249);
     }
 
-.about-box{
-    overflow-y: scroll;
-}
+    .about-box {
+        overflow-y: scroll;
+    }
 
     @media screen and (max-width: 628px) {
-        .more-details-pc{
+        .more-details-pc {
             display: none;
         }
-        .main-cover{
+
+        .main-cover {
             margin: 0 !important;
         }
-        .container-main .about-box{
+
+        .container-main .about-box {
             padding: 20px;
         }
-        #contact-us:checked~.container-main .contact-us-box{
+
+        #contact-us:checked~.container-main .contact-us-box {
             padding: 10px;
         }
-        .orders>label{
+
+        .orders>label {
             margin-left: 7px;
         }
-        .more-details-mobile{
+
+        .more-details-mobile {
             display: unset;
         }
 
@@ -1101,60 +1113,69 @@
         .product-image {
             margin: 7px;
         }
-        .movie-cover{
+
+        .movie-cover {
             margin: 20px 10px !important;
         }
-        #contact-us:checked~.container-main .contact-us-box , .container-main .about-box{
+
+        #contact-us:checked~.container-main .contact-us-box,
+        .container-main .about-box {
             padding: 30px 20px;
         }
 
-        .container-main .about-box{
+        .container-main .about-box {
             font-size: 16px;
         }
 
-        .container-main{
+        .container-main {
             grid-template-columns: 60px 1fr;
             border-radius: 8px;
         }
 
-        .svg-label span{
+        .svg-label span {
             display: none;
         }
 
-        .user-box .music-logo{
+        .user-box .music-logo {
             height: 50px;
         }
-        .user-info svg{
+
+        .user-info svg {
             height: 50px;
         }
-        .container-main{
+
+        .container-main {
             max-height: unset;
             max-width: unset;
             height: 98%;
             width: 98%;
         }
 
-        .contact-box , .para-cover{
+        .contact-box,
+        .para-cover {
             box-shadow: none !important;
             padding: 0 !important;
             border: none !important;
         }
 
-        .movie{
+        .movie {
             flex-direction: column;
         }
 
-        .movie-songs{
+        .movie-songs {
             margin: 0 !important;
         }
     }
 
-    @media screen and (max-width: 350px){
-        #contact-us:checked~.container-main .contact-us-box, .container-main .about-box{
+    @media screen and (max-width: 350px) {
+
+        #contact-us:checked~.container-main .contact-us-box,
+        .container-main .about-box {
             padding: 10px 10px 10px 20px;
             font-size: 15px;
         }
-        .contact-box .text{
+
+        .contact-box .text {
             font-size: 14px;
         }
     }
@@ -1182,11 +1203,11 @@
     }
 
     .movie-cover {
-        background: rgb(229, 231, 235);
+        background: white;
         width: min-content;
         border-radius: 8px;
         padding: 6px;
-        box-shadow: 0 0 15px rgb(0 0 0/0.6);
+        box-shadow: 0 0 15px rgb(0 0 0/0.7);
         padding-bottom: 0;
         height: min-content;
         margin: 25px 45px;
@@ -1230,7 +1251,7 @@
     }
 
     .movie-songs {
-        background: rgb(229, 231, 235);
+        background: white;
         border-radius: 8px;
         display: none;
         grid-template-rows: 1fr 1fr 1fr;
@@ -1255,6 +1276,7 @@
     .movie {
         display: flex;
         justify-content: center;
+        align-items: center;
     }
 
     .song1 {
@@ -1300,9 +1322,9 @@
         display: flex;
         align-items: center;
         justify-content: space-around;
-        background: rgb(229, 231, 235);
+        background: white;
         border-radius: 15px;
-        box-shadow: 0 0 15px rgb(0 0 0/0.6);
+        box-shadow: 0 0 15px rgb(0 0 0/0.7);
         font-size: 17px;
         padding: 0 10px 0 15px;
         text-align: center;
@@ -1357,24 +1379,45 @@
         display: flex;
         justify-content: space-around;
     }
-    p span{
+
+    p span {
         font-family: "Roboto";
         font-weight: 600;
     }
-    p{
+
+    p {
         text-align: justify;
     }
-    .para-cover{
+
+    .para-cover {
         border-radius: 20px;
         box-shadow: 0 0 15px rgb(0 0 0/0.6) inset;
         padding: 25px;
+    }
+
+    @media screen and (max-width: 400px) {
+        .song-cover {
+            font-size: 15px;
+            width: 260px;
+            padding: 0 5px 0 10px;
+            margin-left: 0;
+        }
+
+        .song-cover img {
+            width: 55px;
+            height: 45px;
+        }
+
+        .songs-box{
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        }
     }
 </style>
 
 <body>
 
     <input id="movies-box" class="hidden" type="radio" name="song" checked>
-    <input id="songs" class="hidden" type="radio" name="song" >
+    <input id="songs" class="hidden" type="radio" name="song">
     <input id="about" class="hidden" type="radio" name="song">
     <input id="contact-us" class="hidden" type="radio" name="song">
 
@@ -1438,9 +1481,9 @@
                                 <path
                                     d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z" />
                             </svg>
-                           
-                                <span>Songs</span>
-                         
+
+                            <span>Songs</span>
+
                         </div>
 
                     </label>
@@ -1449,7 +1492,11 @@
                         <b></b>
                         <div class="svg-label">
 
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sidebar-icons" viewBox="0 0 1792 1792"><path d="M1600 1405q0 120-73 189.5t-194 69.5h-874q-121 0-194-69.5t-73-189.5q0-53 3.5-103.5t14-109 26.5-108.5 43-97.5 62-81 85.5-53.5 111.5-20q9 0 42 21.5t74.5 48 108 48 133.5 21.5 133.5-21.5 108-48 74.5-48 42-21.5q61 0 111.5 20t85.5 53.5 62 81 43 97.5 26.5 108.5 14 109 3.5 103.5zm-320-893q0 159-112.5 271.5t-271.5 112.5-271.5-112.5-112.5-271.5 112.5-271.5 271.5-112.5 271.5 112.5 112.5 271.5z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sidebar-icons"
+                                viewBox="0 0 1792 1792">
+                                <path
+                                    d="M1600 1405q0 120-73 189.5t-194 69.5h-874q-121 0-194-69.5t-73-189.5q0-53 3.5-103.5t14-109 26.5-108.5 43-97.5 62-81 85.5-53.5 111.5-20q9 0 42 21.5t74.5 48 108 48 133.5 21.5 133.5-21.5 108-48 74.5-48 42-21.5q61 0 111.5 20t85.5 53.5 62 81 43 97.5 26.5 108.5 14 109 3.5 103.5zm-320-893q0 159-112.5 271.5t-271.5 112.5-271.5-112.5-112.5-271.5 112.5-271.5 271.5-112.5 271.5 112.5 112.5 271.5z" />
+                            </svg>
 
 
 
@@ -1461,7 +1508,12 @@
                         <b></b>
                         <b></b>
                         <div class="svg-label">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="h-6 w-6 truck" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" class="h-6 w-6 truck" stroke="white"
+                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                width="24">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
                             <span>Contact Us</span>
                         </div>
 
@@ -1490,9 +1542,12 @@
                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z"
                                 clip-rule="evenodd" />
                         </svg>
-                        <svg onclick="moredetails1()" xmlns="http://www.w3.org/2000/svg" class="more-details more-details-mobile hidden" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z" clip-rule="evenodd" />
-                          </svg>
+                        <svg onclick="moredetails1()" xmlns="http://www.w3.org/2000/svg"
+                            class="more-details more-details-mobile hidden" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v3.586L7.707 9.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 10.586V7z"
+                                clip-rule="evenodd" />
+                        </svg>
 
                     </div>
                     <div class="movie-songs">
@@ -2128,24 +2183,28 @@
 
         <div class="about-box items-center justify-center">
             <div class="h-full w-full grid place-items-center para-cover">
-            <p class="p1">
-            With <span>HAUA</span> Songs, it’s easy to find the right music for every moment – on your phone, your computer, your
-            tablet and more.
-        </p>
+                <p class="p1">
+                    With <span>HAUA</span> Songs, it’s easy to find the right music for every moment – on your phone,
+                    your computer, your
+                    tablet and more.
+                </p>
 
-        <p class="p2">
-            There are plenty of information about tracks and episodes on <span>HAUA</span> Songs. So whether you’re behind the wheel,
-            working out, partying or relaxing, the right music is always at your
-            fingertips. Choose what you want to listen to, or let us surprise you.
-            You can also browse through the collections of top songs and movies for which there is plenty of songs in
-            here.
-        </p>
+                <p class="p2">
+                    There are plenty of information about tracks and episodes on <span>HAUA</span> Songs. So whether
+                    you’re behind the wheel,
+                    working out, partying or relaxing, the right music is always at your
+                    fingertips. Choose what you want to listen to, or let us surprise you.
+                    You can also browse through the collections of top songs and movies for which there is plenty of
+                    songs in
+                    here.
+                </p>
 
-        <p class="p3">
-            This is made by <span>Utkarsh, Abhishek, Akshat</span> and <span></span> Harsh</span> That's why we call out website as HAUA Songs.
-            Feel the tunes and enjoy surfing.
-        </p>
-    </div>
+                <p class="p3">
+                    This is made by <span>Utkarsh, Abhishek, Akshat</span> and <span></span> Harsh</span> That's why we
+                    call out website as HAUA Songs.
+                    Feel the tunes and enjoy surfing.
+                </p>
+            </div>
         </div>
 
         <!-- --------- contact-us BoX --------  -->
@@ -2158,7 +2217,7 @@
                     <div class="text">Enter Your Name</div>
                 </div>
 
-                
+
                 <div class="fieldset">
                     <input type="text">
                     <div class="text">Email Address</div>
@@ -2178,7 +2237,7 @@
 
 
                 <div class="fieldset">
-                    <textarea ></textarea>
+                    <textarea></textarea>
                     <div class="text">Message</div>
                 </div>
 
