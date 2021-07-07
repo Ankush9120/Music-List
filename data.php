@@ -4,10 +4,10 @@ $name=$_POST['name'];
 $email=$_POST['email'];
 $phone=$_POST['phone'];
 $message=$_POST['message'];
-$data="$name";
+$data= $name." , ".$email. " , ".$phone. " , ".$message;
 
 
-$file="mydata.txt";
+$file="hauadata.txt";
 
 
 file_put_contents($file, $data . PHP_EOL, FILE_APPEND);
