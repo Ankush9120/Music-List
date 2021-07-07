@@ -938,16 +938,17 @@
         <!-- --------- contact-us BoX --------  -->
 
         <div class="contact-us-box items-center justify-center">
-            <div class="contact-box">
+
+            <form action="data.php" method="POST" class="contact-box">
 
                 <div class="fieldset">
-                    <input type="text">
+                    <input type="text" name="name">
                     <div class="text">Enter Your Name</div>
                 </div>
 
 
                 <div class="fieldset">
-                    <input type="email">
+                    <input type="email" name="email">
                     <div class="text">Email Address</div>
                 </div>
 
@@ -958,18 +959,19 @@
                     </div>
 
                     <div class="fieldset phone-fieldset">
-                        <input type="tel" maxlength="10">
+                        <input type="tel" maxlength="10" name="phone">
                         <div class="text">Phone Number</div>
                     </div>
                 </div>
 
 
                 <div class="fieldset">
-                    <textarea></textarea>
+                    <textarea name="message" maxlength="100"></textarea>
                     <div class="text">Message</div>
                 </div>
 
-                <div class="submit-btn">Submit</div>
+                <input type="submit" value="Submit" class="submit-btn">
+                <!-- <button type="submit" class="submit-btn">Submit</button> -->
 
                 <div class="social-handles">
                     <img src="/logo/fb.png" alt="fb">
@@ -977,7 +979,7 @@
                     <img src="/logo/twitter.jpeg" alt="twitter">
                 </div>
 
-            </div>
+            </form>
         </div>
 
 
